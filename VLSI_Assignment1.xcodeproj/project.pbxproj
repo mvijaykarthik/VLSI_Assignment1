@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B10318A715EEA74300007C47 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B10318A615EEA74300007C47 /* main.cpp */; };
 		B10318A915EEA74300007C47 /* VLSI_Assignment1.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = B10318A815EEA74300007C47 /* VLSI_Assignment1.1 */; };
+		B197C36B15EEB2E500AF68F4 /* Graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B197C36915EEB2E500AF68F4 /* Graph.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +27,10 @@
 
 /* Begin PBXFileReference section */
 		B10318A215EEA74300007C47 /* VLSI_Assignment1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = VLSI_Assignment1; sourceTree = BUILT_PRODUCTS_DIR; };
-		B10318A615EEA74300007C47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		B10318A815EEA74300007C47 /* VLSI_Assignment1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = VLSI_Assignment1.1; sourceTree = "<group>"; };
+		B10318A615EEA74300007C47 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = VLSI_Assignment1/main.cpp; sourceTree = SOURCE_ROOT; };
+		B10318A815EEA74300007C47 /* VLSI_Assignment1.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; name = VLSI_Assignment1.1; path = VLSI_Assignment1/VLSI_Assignment1.1; sourceTree = SOURCE_ROOT; };
+		B197C36915EEB2E500AF68F4 /* Graph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Graph.cpp; path = VLSI_Assignment1/Graph.cpp; sourceTree = SOURCE_ROOT; };
+		B197C36A15EEB2E500AF68F4 /* Graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Graph.h; path = VLSI_Assignment1/Graph.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,8 @@
 			children = (
 				B10318A615EEA74300007C47 /* main.cpp */,
 				B10318A815EEA74300007C47 /* VLSI_Assignment1.1 */,
+				B197C36915EEB2E500AF68F4 /* Graph.cpp */,
+				B197C36A15EEB2E500AF68F4 /* Graph.h */,
 			);
 			path = VLSI_Assignment1;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B10318A715EEA74300007C47 /* main.cpp in Sources */,
+				B197C36B15EEB2E500AF68F4 /* Graph.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +154,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_CFLAGS[arch=*]" = (
+					"-I",
+					/Volumes/Files/Programs/VLSI/VLSI_Assignment1/,
+					"-fopenmp",
+				);
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -206,6 +217,7 @@
 				B10318AE15EEA74300007C47 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

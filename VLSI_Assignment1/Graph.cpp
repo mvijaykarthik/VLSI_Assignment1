@@ -8,13 +8,15 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-using namespace std;
 #include "Graph.h"
-
+#include <Eigen/Dense>
+using namespace std;
+using namespace Eigen;
+typedef Matrix<double, Dynamic, Dynamic> Mat2D;
 
 class Graph
 {
-    int **adjMat;
+    Mat2D * adjMat;
     int numVertices;
     int numEdges;
     
@@ -42,13 +44,27 @@ class Graph
             string sub;
             iss >> sub;
             int nbr = atoi(sub.c_str());
-            adjMat[nbr][i] = 1;
-            adjMat[i][nbr] = 1;
+            (*adjMat)(nbr,i) = 1;
+            (*adjMat)(i, nbr) = 1;
             
         } while (iss);
     }
     
 public:
+    
+    void Partitioner(double imbalance)
+    {
+       // omp_set_num_threads(4);
+        // setNbThreads(4); // 4 Threads
+        // cout << nbThreads(4) <<endl;
+        SelfAdjointEigenSolver<Mat2D> eigensolver(*adjMat);
+        if (eigensolver.info() != Success) abort();
+        cout << "Eigenvalues" << endl;
+        cout << eigensolver.eigenvalues();
+        cout << endl << "Eigenvectors" << endl;
+        cout << eigensolver.eigenvectors();
+    }
+    
     Graph(string fileName)
     {
         ifstream graphFile(fileName.c_str());
@@ -58,11 +74,7 @@ public:
             getline(graphFile, line);
             this->numVertices = getNumVertices(line);
             this->numEdges = getNumEdges(line);
-            this->adjMat = new int*[this->numVertices];
-            for (int i = 0; i < this->numVertices; i++)
-            {
-                this->adjMat[i] = new int[numVertices];
-            }
+            this->adjMat = new Mat2D(this->numVertices + 1, this->numVertices + 1);
             
             for(int i = 0; i < this->numVertices; i++)
             {
@@ -72,3 +84,5 @@ public:
         }
     }
 };
+
+
